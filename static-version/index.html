@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>i18next 정적으로 진행하게 된다면?</title>
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.js"></script>
+    <script>
+      window.onload = function () {
+        i18next.init(
+          {
+            lng: "en",
+            debug: true,
+            resources: {
+              en: {
+                translation: {
+                  key: "hello world",
+                },
+              },
+            },
+          },
+          function (err, t) {
+            // initialized and ready to go!
+            document.getElementById("output").innerHTML = i18next.t("key");
+          }
+        );
+      };
+    </script>
+  </head>
+  <body>
+    <div id="wrap">
+      <h1>희망입니다.</h1>
+      <div id="output"></div>
+    </div>
+  </body>
+</html>

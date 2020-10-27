@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>i18next 동적으로 진행하게 된다면?</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.0/jquery-i18next.min.js"></script>
+    <script>
+      window.onload = function () {
+        i18next.init(
+          {
+            lng: "en",
+            debug: true,
+            resources: {
+              en: {
+                translation: {
+                  key: "hello world",
+                  nav: {
+                    home: "<span>Home </span>",
+                    page1: "Page One",
+                    page2: "Pag",
+                  },
+                  content:
+                    'Would you like to apply for alumni e-mail using <span class="highlight">chchoing@naver.com</span>?',
+                },
+              },
+            },
+          },
+          function (err, t) {
+            // initialized and ready to go!
+            jqueryI18next.init(i18next, $);
+            $("#wrap").localize();
+          }
+        );
+      };
+    </script>
+  </head>
+  <body>
+    <div id="wrap">
+      <h1>희망입니다.</h1>
+      <p data-i18n="[html]content">
+        <span class="highlight">chchoing@naver.com</span>로 <br />
+        졸업생 메일 사용신청을 하시겠습니까?
+      </p>
+      <ul class="nav">
+        <li>
+          <a
+            href="#"
+            data-i18n="[html]nav.home"
+            data-i18n-options='{ "a": "b" }'
+          ></a>
+        </li>
+        <li><a href="#" data-i18n="nav.page1"></a></li>
+        <li><a href="#" data-i18n="nav.page2"></a></li>
+      </ul>
+    </div>
+  </body>
+</html>
